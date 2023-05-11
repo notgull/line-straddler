@@ -61,7 +61,76 @@ fn lines() {
         },
     ];
 
-    // Run the algorithm.
+    let styles = [
+        (LineType::Overline, 0.0, 5.0),
+        (LineType::Underline, 4.0, 9.0),
+        (LineType::StrikeThrough, 2.0, 7.0),
+    ];
+
+    for (style, first_line_y, second_line_y) in styles {
+        // Run the algorithm.
+        let mut alg = LineGenerator::new(style);
+        let mut lines = vec![];
+
+        for glyph in glyphs {
+            lines.extend(alg.add_glyph(glyph));
+        }
+        lines.extend(alg.pop_line());
+
+        assert_eq!(lines.len(), 2);
+        assert_approx_eq!(lines[0].y as f64, first_line_y);
+        assert_approx_eq!(lines[0].start_x as f64, 0.0);
+        assert_approx_eq!(lines[0].end_x as f64, 5.0);
+
+        assert_approx_eq!(lines[1].y as f64, second_line_y);
+        assert_approx_eq!(lines[1].start_x as f64, 0.0);
+        assert_approx_eq!(lines[1].end_x as f64, 5.0);
+    }
+}
+
+#[test]
+fn mid_line_switch() {
+    // The color of the glyphs switches mid-line.
+    let style1 = GlyphStyle {
+        bold: false,
+        color: Color::rgba(0, 0, 0, 255),
+    };
+    let style2 = GlyphStyle {
+        bold: false,
+        color: Color::rgba(255, 255, 255, 255),
+    };
+
+    let glyphs = [
+        Glyph {
+            line_y: 0.0,
+            font_size: 4.0,
+            width: 2.0,
+            x: 0.0,
+            style: style1,
+        },
+        Glyph {
+            line_y: 0.0,
+            font_size: 4.0,
+            width: 2.0,
+            x: 3.0,
+            style: style1,
+        },
+        Glyph {
+            line_y: 0.0,
+            font_size: 4.0,
+            width: 2.0,
+            x: 6.0,
+            style: style2,
+        },
+        Glyph {
+            line_y: 0.0,
+            font_size: 4.0,
+            width: 2.0,
+            x: 9.0,
+            style: style2,
+        },
+    ];
+
     let mut alg = LineGenerator::new(LineType::Overline);
     let mut lines = vec![];
 
@@ -73,9 +142,28 @@ fn lines() {
     assert_eq!(lines.len(), 2);
     assert_approx_eq!(lines[0].y as f64, 0.0);
     assert_approx_eq!(lines[0].start_x as f64, 0.0);
-    assert_approx_eq!(lines[0].end_x as f64, 5.0);
+    assert_approx_eq!(lines[0].end_x as f64, 6.0);
+    assert_eq!(lines[0].style, style1);
 
-    assert_approx_eq!(lines[1].y as f64, 5.0);
-    assert_approx_eq!(lines[1].start_x as f64, 0.0);
-    assert_approx_eq!(lines[1].end_x as f64, 5.0);
+    assert_approx_eq!(lines[1].y as f64, 0.0);
+    assert_approx_eq!(lines[1].start_x as f64, 6.0);
+    assert_approx_eq!(lines[1].end_x as f64, 11.0);
+    assert_eq!(lines[1].style, style2);
+}
+
+#[test]
+fn colors() {
+    let color = Color::rgba(1, 2, 3, 4);
+    assert_eq!(color.red(), 1);
+    assert_eq!(color.green(), 2);
+    assert_eq!(color.blue(), 3);
+    assert_eq!(color.alpha(), 4);
+    assert_eq!(color.components(), [1, 2, 3, 4]);
+}
+
+#[test]
+fn other_coverage() {
+    println!("{:?}", Color::default().clone());
+    assert_eq!(Color::default(), Color::default());
+    println!("{:?}", LineGenerator::new(LineType::Overline));
 }

@@ -25,7 +25,7 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
 /// A glyph to be rendered.
-#[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Glyph {
     /// The y coordinate of the glyph's line.
     pub line_y: f32,
@@ -44,7 +44,7 @@ pub struct Glyph {
 }
 
 /// Glyph styling information.
-#[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub struct GlyphStyle {
     /// Whether or not the glyph is bold.
     pub bold: bool,
@@ -54,7 +54,7 @@ pub struct GlyphStyle {
 }
 
 /// 32-bit RGBA color.
-#[derive(Debug, Clone, Copy, PartialEq, PartialOrd, Eq, Ord, Hash, Default)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Default)]
 pub struct Color(u32);
 
 impl Color {
@@ -96,7 +96,7 @@ impl Color {
 }
 
 /// The horizontal line that needs to be rendered.
-#[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Line {
     /// The Y coordinate of the line.
     pub y: f32,
