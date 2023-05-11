@@ -14,3 +14,6 @@ libm = { version = "0.2.6", optional = true }
 default = ["std"]
 std = ["alloc"]
 alloc = []
+
+[dev-dependencies]
+approx_eq = "0.1.8"

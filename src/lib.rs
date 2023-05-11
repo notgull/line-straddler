@@ -57,6 +57,44 @@ pub struct GlyphStyle {
 #[derive(Debug, Clone, Copy, PartialEq, PartialOrd, Eq, Ord, Hash, Default)]
 pub struct Color(u32);
 
+impl Color {
+    /// Create a new color from the given RGBA values.
+    #[inline]
+    pub fn rgba(r: u8, g: u8, b: u8, a: u8) -> Self {
+        Self(((r as u32) << 24) | ((g as u32) << 16) | ((b as u32) << 8) | (a as u32))
+    }
+
+    /// Get the red component of the color.
+    #[inline]
+    pub fn red(self) -> u8 {
+        ((self.0 >> 24) & 0xFF) as u8
+    }
+
+    /// Get the green component of the color.
+    #[inline]
+    pub fn green(self) -> u8 {
+        ((self.0 >> 16) & 0xFF) as u8
+    }
+
+    /// Get the blue component of the color.
+    #[inline]
+    pub fn blue(self) -> u8 {
+        ((self.0 >> 8) & 0xFF) as u8
+    }
+
+    /// Get the alpha component of the color.
+    #[inline]
+    pub fn alpha(self) -> u8 {
+        (self.0 & 0xFF) as u8
+    }
+
+    /// Get an array of the components.
+    #[inline]
+    pub fn components(self) -> [u8; 4] {
+        [self.red(), self.green(), self.blue(), self.alpha()]
+    }
+}
+
 /// The horizontal line that needs to be rendered.
 #[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
 pub struct Line {
