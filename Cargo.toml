@@ -1,11 +1,12 @@
 [package]
 name = "line-straddler"
 version = "0.1.0"
-edition = "2021"
+edition = "2018"
 authors = ["John Nunley <jtnunley01@gmail.com>"]
 description = "Determine how lines through text (underlines, strikethroughs, etc) should be rendered."
 repository = "https://github.com/notgull/line-straddler"
 license = "LGPL-3.0-or-later OR MPL-2.0"
+rust-version = "1.37"
 
 [dependencies]
 libm = { version = "0.2.6", optional = true }
