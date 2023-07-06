@@ -267,7 +267,7 @@ impl LineGenerator {
 
         // Make sure the old line ends where the new glyph begins if it's on the same line.
         if let Some(old_line) = old_line.as_mut() {
-            if approx_eq(old_line.y, glyph.line_y) {
+            if approx_eq(old_line.last_line_y, glyph.line_y) {
                 old_line.end_x = glyph.x;
             }
         }
