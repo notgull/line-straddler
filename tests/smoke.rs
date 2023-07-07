@@ -152,6 +152,104 @@ fn mid_line_switch() {
 }
 
 #[test]
+fn full_line_then_switch() {
+    let style = GlyphStyle {
+        bold: false,
+        color: Color::rgba(0, 0, 0, 255),
+    };
+
+    // Copied from the piet-cosmic-text usecase.
+    let glyphs = [
+        Glyph {
+            line_y: 3.2000008,
+            font_size: 32.0,
+            width: 17.828125,
+            x: 0.0,
+            style,
+        },
+        Glyph {
+            line_y: 3.2000008,
+            font_size: 32.0,
+            width: 8.890625,
+            x: 17.828125,
+            style,
+        },
+        Glyph {
+            line_y: 3.2000008,
+            font_size: 32.0,
+            width: 20.28125,
+            x: 26.71875,
+            style,
+        },
+        Glyph {
+            line_y: 3.2000008,
+            font_size: 32.0,
+            width: 19.6875,
+            x: 47.0,
+            style,
+        },
+        Glyph {
+            line_y: 3.2000008,
+            font_size: 32.0,
+            width: 10.171875,
+            x: 66.6875,
+            style,
+        },
+        Glyph {
+            line_y: 3.2000008,
+            font_size: 32.0,
+            width: 26.8125,
+            x: 76.859375,
+            style,
+        },
+        Glyph {
+            line_y: 3.2000008,
+            font_size: 32.0,
+            width: 20.359375,
+            x: 103.671875,
+            style,
+        },
+        Glyph {
+            line_y: 35.2,
+            font_size: 32.0,
+            width: 17.828125,
+            x: 0.0,
+            style,
+        },
+        Glyph {
+            line_y: 35.2,
+            font_size: 32.0,
+            width: 8.890625,
+            x: 17.828125,
+            style,
+        },
+    ];
+
+    let styles = [
+        (LineType::Overline, 0.0, 5.0),
+        (LineType::Underline, 4.0, 9.0),
+        (LineType::StrikeThrough, 2.0, 7.0),
+    ];
+
+    for (style, _, _) in styles {
+        // Run the algorithm.
+        let mut alg = LineGenerator::new(style);
+        let mut lines = vec![];
+
+        for glyph in glyphs {
+            lines.extend(alg.add_glyph(glyph));
+        }
+        lines.extend(alg.pop_line());
+
+        assert!(
+            (lines[0].start_x - lines[0].end_x).abs() > 0.0001,
+            "style={:?}",
+            style
+        );
+    }
+}
+
+#[test]
 fn colors() {
     let color = Color::rgba(1, 2, 3, 4);
     assert_eq!(color.red(), 1);
