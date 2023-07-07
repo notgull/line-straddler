@@ -25,7 +25,7 @@ use line_straddler::{Color, Glyph, GlyphStyle, LineGenerator, LineType};
 #[test]
 fn lines() {
     let style = GlyphStyle {
-        bold: false,
+        boldness: 100,
         color: Color::rgba(0, 0, 0, 255),
     };
 
@@ -92,11 +92,11 @@ fn lines() {
 fn mid_line_switch() {
     // The color of the glyphs switches mid-line.
     let style1 = GlyphStyle {
-        bold: false,
+        boldness: 100,
         color: Color::rgba(0, 0, 0, 255),
     };
     let style2 = GlyphStyle {
-        bold: false,
+        boldness: 100,
         color: Color::rgba(255, 255, 255, 255),
     };
 
@@ -154,7 +154,7 @@ fn mid_line_switch() {
 #[test]
 fn full_line_then_switch() {
     let style = GlyphStyle {
-        bold: false,
+        boldness: 100,
         color: Color::rgba(0, 0, 0, 255),
     };
 

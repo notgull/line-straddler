@@ -32,7 +32,7 @@
 //! // Take some glyphs from, e.g, cosmic-text
 //! // For instance, this is two lines of two glyphs.
 //! let style = GlyphStyle {
-//!     bold: false,
+//!     boldness: 100,
 //!     color: Color::rgba(0, 0, 0, 255),
 //! };
 //! let glyphs = [
@@ -115,8 +115,8 @@ pub struct Glyph {
 /// Glyph styling information.
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct GlyphStyle {
-    /// Whether or not the glyph is bold.
-    pub bold: bool,
+    /// The weight of the glyph.
+    pub boldness: u16,
 
     /// The color of the glyph.
     pub color: Color,
