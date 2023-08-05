@@ -1,6 +1,6 @@
 [package]
 name = "line-straddler"
-version = "0.2.0"
+version = "0.2.1"
 edition = "2018"
 authors = ["John Nunley <jtnunley01@gmail.com>"]
 description = "Determine how lines through text (underlines, strikethroughs, etc) should be rendered."
