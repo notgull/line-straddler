@@ -5,6 +5,7 @@ edition = "2018"
 authors = ["John Nunley <dev@notgull.net>"]
 description = "Determine how lines through text (underlines, strikethroughs, etc) should be rendered."
 repository = "https://git.sr.ht/~notgull/line-straddler"
+homepage = "https://git.sr.ht/~notgull/line-straddler"
 license = "LGPL-3.0-or-later OR MPL-2.0"
 rust-version = "1.43"
 
