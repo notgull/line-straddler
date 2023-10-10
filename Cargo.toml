@@ -7,7 +7,7 @@ description = "Determine how lines through text (underlines, strikethroughs, etc
 repository = "https://git.sr.ht/~notgull/line-straddler"
 homepage = "https://git.sr.ht/~notgull/line-straddler"
 license = "LGPL-3.0-or-later OR MPL-2.0"
-rust-version = "1.43"
+rust-version = "1.63"
 
 [dependencies]
 libm = { version = "0.2.6", optional = true }

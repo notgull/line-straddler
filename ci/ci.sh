@@ -60,5 +60,5 @@ lstrl_tidy
 lstrl_test_version stable true
 lstrl_test_version beta true
 lstrl_test_version nightly true
-lstrl_test_version 1.43.0 false
+lstrl_test_version 1.63.0 false
 
