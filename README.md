@@ -2,11 +2,17 @@
 
 Figure out where lines should go when underlining/striking through text.
 
-When you're drawing text, you need to determine where the lines go for text decorations. This crate provides a renderer-agnostic `LineGenerator` that generates `Line` structures for a set of `Glyph`s.
+When you're drawing text, you need to determine where the lines go for text
+decorations. This crate provides a renderer-agnostic `LineGenerator` that
+generates `Line` structures for a set of `Glyph`s.
 
 ## Source Code
 
-The canonical code for this repository is kept on our [Git Forge](https://src.notgull.net/notgull/line-straddler). For convenience, a mirror is kept on [GitHub](https://github.com/notgull/line-straddler).
+The canonical code for this repository is kept on our [Git Forge]. For
+convenience, a mirror is kept on [GitHub].
+
+[Git Forge]: https://src.notgull.net/notgull/line-straddler
+[GitHub]: https://github.com/notgull/line-straddler
 
 ## Example
 
@@ -70,16 +76,19 @@ for line in lines {
 
 ## License
 
-`line-straddler` is free software: you can redistribute it and/or modify it under the terms of
-either:
+`line-straddler` is free software: you can redistribute it and/or modify it under
+the terms of either:
 
-* GNU Lesser General Public License as published by the Free Software Foundation, either
-version 3 of the License, or (at your option) any later version.
+* GNU Lesser General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option)
+  any later version.
 * Mozilla Public License as published by the Mozilla Foundation, version 2.
 
-`line-straddler` is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU Lesser General Public License or the Mozilla Public License for more details.
+`line-straddler` is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License or the
+Mozilla Public License for more details.
 
-You should have received a copy of the GNU Lesser General Public License and the Mozilla
-Public License along with `line-straddler`. If not, see <https://www.gnu.org/licenses/>.
+You should have received a copy of the GNU Lesser General Public License and the
+Mozilla Public License along with `line-straddler`. If not, see
+<https://www.gnu.org/licenses/>.
