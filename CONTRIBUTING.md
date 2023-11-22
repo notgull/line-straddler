@@ -25,7 +25,7 @@ As an alternative to a Contributor License Agreement, this project uses a
 own the copyright terms of their contributions. In order to assert that you
 agree to the terms of the DCO, you must add the following line to every commit:
 
-```
+```plaintext
 Signed-off-by: Your Name <email>
 ```
 
