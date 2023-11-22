@@ -1,0 +1,59 @@
+kind: pipeline
+type: docker
+name: tidy
+
+steps:
+  - name: tidy
+    image: notgull/ci:stable
+    commands:
+      - tidy.sh
+---
+kind: pipeline
+type: docker
+name: test-stable
+
+depends_on:
+  - tidy
+
+steps:
+  - name: tidy
+    image: notgull/ci:stable
+    commands:
+      - test_rust.sh
+---
+kind: pipeline
+type: docker
+name: test-beta
+
+depends_on:
+  - tidy
+
+steps:
+  - name: tidy
+    image: notgull/ci:beta
+    commands:
+      - test_rust.sh
+---
+kind: pipeline
+type: docker
+name: github
+
+trigger:
+  branch:
+    - main
+  event:
+    - push
+
+steps:
+  - name: mirror to GitHub
+    image: alpine:edge
+    environment:
+      SSH_KEY:
+        from_secret: gh_ssh_key
+    commands:
+      - apk add git openssh
+      - mkdir -pv ~/.ssh
+      - ssh-keyscan -H -t rsa github.com >> ~/.ssh/known_hosts
+      - echo "$SSH_KEY" > ~/.ssh/id_rsa && chmod 0600 ~/.ssh/id_rsa
+      - git remote add github_origin git@github.com:notgull/line-straddler.git
+      - git push github_origin main

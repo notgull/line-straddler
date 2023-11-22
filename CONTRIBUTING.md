@@ -1,6 +1,6 @@
 # Contribution
 
-We welcome contributions to this project. Please do not open issues or pull requests on the GitHub mirror. Please open tickets on our [`todo.sr.ht`](https://todo.sr.ht/~notgull/theo) page and submit patches to our [mailing list](https://lists.sr.ht/~notgull/theo-devel).
+We welcome contributions to this project. Please do not open issues or pull requests on the GitHub mirror. Please open issues and pull requests on our [`Git forge`](https://src.notgull.net/notgull/line-straddler).
 
 ## Coding Style
 
@@ -11,9 +11,7 @@ We welcome contributions to this project. Please do not open issues or pull requ
 
 ## Testing
 
-All changes submitted to this repository are run through GitHub Actions and the workflow defined into the [`ci.sh`] file. If your change does not pass the tests described, it is unlikely to be merged.
-
-[`ci.sh`]: https://git.sr.ht/~notgull/line-straddler/tree/main/item/ci/ci.sh
+All changes submitted to this repository are run through our Drone CI system. Our CI scripts are stored [here](https://src.notgull.net/notgull/ci).
 
 ## DCO
 

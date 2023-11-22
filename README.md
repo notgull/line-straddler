@@ -2,9 +2,11 @@
 
 Figure out where lines should go when underlining/striking through text.
 
-This project is hosted on [SourceHut](https://git.sr.ht/~notgull/line-straddler). The GitHub mirror is kept for convenience.
-
 When you're drawing text, you need to determine where the lines go for text decorations. This crate provides a renderer-agnostic `LineGenerator` that generates `Line` structures for a set of `Glyph`s.
+
+## Source Code
+
+The canonical code for this repository is kept on our [Git Forge](https://src.notgull.net/notgull/line-straddler). For convenience, a mirror is kept on [GitHub](https://github.com/notgull/line-straddler).
 
 ## Example
 
