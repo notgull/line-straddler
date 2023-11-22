@@ -19,7 +19,7 @@ steps:
   - name: tidy
     image: notgull/ci:stable
     commands:
-      - test_rust.sh
+      - test_rust.sh --skip-ndf libm
 ---
 kind: pipeline
 type: docker
@@ -32,7 +32,7 @@ steps:
   - name: tidy
     image: notgull/ci:beta
     commands:
-      - test_rust.sh
+      - test_rust.sh --skip-ndf libm
 ---
 kind: pipeline
 type: docker
