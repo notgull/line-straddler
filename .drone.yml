@@ -5,6 +5,7 @@ name: tidy
 steps:
   - name: tidy
     image: notgull/ci:stable
+    pull: true
     commands:
       - tidy.sh
 ---
@@ -18,6 +19,7 @@ depends_on:
 steps:
   - name: tidy
     image: notgull/ci:stable
+    pull: true
     commands:
       - test_rust.sh --skip-ndf libm
 ---
@@ -31,6 +33,7 @@ depends_on:
 steps:
   - name: tidy
     image: notgull/ci:beta
+    pull: true
     commands:
       - test_rust.sh --skip-ndf libm
 ---
