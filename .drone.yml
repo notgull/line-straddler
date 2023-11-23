@@ -85,6 +85,7 @@ steps:
   - name: check_tag
     image: alpine:edge
     commands:
+      - apk add git
       - if [ ! git describe --tags "$(git rev-parse HEAD)" ]; then exit 78; fi
       - export GIT_TAG="git describe --tags "$(git rev-parse HEAD)"
       - echo "$GIT_TAG" > /tmp/git_tag
