@@ -87,8 +87,7 @@ steps:
     commands:
       - apk add git
       - if [ ! git describe --tags "$(git rev-parse HEAD)" ]; then exit 78; fi
-      - export GIT_TAG="git describe --tags "$(git rev-parse HEAD)"
-      - echo "$GIT_TAG" > /tmp/git_tag
+      - echo "$(git describe --tags "$(git rev-parse HEAD)")" > /tmp/git_tag
       - if [ ! grep -viq '-' /tmp/git_tag ]; then exit 78; fi
   - name: gitea_release
     image: alpine:edge
