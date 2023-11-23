@@ -86,7 +86,7 @@ steps:
       SSH_KEY:
         from_secret: tea_ssh_key
       TEA_CONFIG:
-        from_secret: tea_config_yml       
+        from_secret: tea_config_yml
     commands:
       - apk add git tea
       - mkdir -pv ~/.ssh && mkdir -pv ~/.config/tea
