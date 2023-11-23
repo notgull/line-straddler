@@ -75,11 +75,17 @@ trigger:
   event:
     - push
 
+depends_on:
+  - test-stable
+  - test-beta
+  - test-nightly
+  - test-msrv
+
 steps:
   - name: check_tag
     image: alpine:edge
     commands:
-      - if [ ! ( git describe --tags "$(git rev-parse HEAD)" | grep -viq '-' ) ]; then exit 78; fi
+      - if [ ! git describe --tags "$(git rev-parse HEAD)" | grep -viq '-' ]; then exit 78; fi
   - name: gitea_release
     image: alpine:edge
     environment:
