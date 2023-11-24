@@ -83,12 +83,9 @@ depends_on:
 
 steps:
   - name: check_tag
-    image: alpine:edge
+    image: notgull/ci:stable
     commands:
-      - apk add git
-      - if [ ! git describe --tags "$(git rev-parse HEAD)" ]; then exit 78; fi
-      - echo "$(git describe --tags "$(git rev-parse HEAD)")" > /tmp/git_tag
-      - if [ ! grep -viq '-' /tmp/git_tag ]; then exit 78; fi
+      - is_release.sh
   - name: gitea_release
     image: alpine:edge
     environment:
@@ -99,9 +96,9 @@ steps:
     commands:
       - apk add git tea
       - mkdir -pv ~/.ssh && mkdir -pv ~/.config/tea
-      - echo "$SSH_KEY" > ~/.ssh/id_rsa && chmod 0600 ~/.ssh_id/rsa
+      - echo "$SSH_KEY" > ~/.ssh/id_rsa && chmod 0600 ~/.ssh/id_rsa
       - echo "$TEA_CONFIG" > ~/.config/tea/config.yml
-      - tea release create --title "$(git describe --tags "$(git rev-pars HEAD)")" -n "notes"
+      - tea release create --title "$(git describe --tags "$(git rev-parse HEAD)")" -n "notes"
 ---
 kind: pipeline
 type: docker
