@@ -82,23 +82,18 @@ depends_on:
   - test-msrv
 
 steps:
-  - name: check_tag
-    image: notgull/ci:stable
-    commands:
-      - is_release.sh
   - name: gitea_release
-    image: alpine:edge
+    image: notgull/ci:stable
     environment:
       SSH_KEY:
         from_secret: tea_ssh_key
       TEA_CONFIG:
         from_secret: tea_config_yml
     commands:
-      - apk add git tea
       - mkdir -pv ~/.ssh && mkdir -pv ~/.config/tea
       - echo "$SSH_KEY" > ~/.ssh/id_rsa && chmod 0600 ~/.ssh/id_rsa
       - echo "$TEA_CONFIG" > ~/.config/tea/config.yml
-      - tea release create --title "$(git describe --tags "$(git rev-parse HEAD)")" -n "notes"
+      - release.sh
 ---
 kind: pipeline
 type: docker
