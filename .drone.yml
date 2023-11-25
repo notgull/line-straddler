@@ -4,7 +4,7 @@ name: tidy
 
 steps:
   - name: tidy
-    image: notgull/ci:stable
+    image: notgull/ci:latest
     pull: true
     commands:
       - tidy.sh
@@ -18,10 +18,10 @@ depends_on:
 
 steps:
   - name: test
-    image: notgull/ci:stable
+    image: notgull/ci:latest
     pull: always
     commands:
-      - test_rust.sh --skip-ndf libm
+      - test_rust.sh stable --skip-ndf libm
 ---
 kind: pipeline
 type: docker
@@ -32,10 +32,10 @@ depends_on:
 
 steps:
   - name: test
-    image: notgull/ci:beta
+    image: notgull/ci:latest
     pull: always
     commands:
-      - test_rust.sh --skip-ndf libm
+      - test_rust.sh beta --skip-ndf libm
 ---
 kind: pipeline
 type: docker
@@ -46,10 +46,10 @@ depends_on:
 
 steps:
   - name: test
-    image: notgull/ci:nightly
+    image: notgull/ci:latest
     pull: always
     commands:
-      - test_rust.sh --skip-ndf libm
+      - test_rust.sh nightly --skip-ndf libm
 ---
 kind: pipeline
 type: docker
@@ -60,10 +60,10 @@ depends_on:
 
 steps:
   - name: test
-    image: notgull/ci:1.63.0
+    image: notgull/ci:latest
     pull: always
     commands:
-      - test_rust.sh --skip-ndf libm
+      - test_rust.sh 1.63.0 --skip-ndf libm
 ---
 kind: pipeline
 type: docker
