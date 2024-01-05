@@ -2,6 +2,10 @@
 
 This log describes changes in the `line-straddler` crate.
 
+## 0.2.3
+
+- Repository was moved from `src.notgull.net` to `codeberg.org`.
+
 ## 0.2.2
 
 - Repository was moved from `sr.ht` to `src.notgull.net`.
