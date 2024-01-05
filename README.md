@@ -8,10 +8,10 @@ generates `Line` structures for a set of `Glyph`s.
 
 ## Source Code
 
-The canonical code for this repository is kept on our [Git Forge]. For
+The canonical code for this repository is kept on [Codeberg]. For
 convenience, a mirror is kept on [GitHub].
 
-[Git Forge]: https://src.notgull.net/notgull/line-straddler
+[Codeberg]: https://codeberg.org/notgull/line-straddler
 [GitHub]: https://github.com/notgull/line-straddler
 
 ## Example
